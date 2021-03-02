@@ -40,11 +40,12 @@ def edit_file(file, text):
 
 @app.route('/')
 def index():
-    title = "Home"
-    img = db.execute('SELECT * FROM images')
-    event = db.execute("SELECT *, substr(date, 6,2) || '-' || substr(date, 9, 2)|| '-' || substr(date, 1, 4) AS new_date FROM events WHERE date >= date('now') ORDER BY new_date ASC LIMIT 4;")
-    result = get_text("index-about")
-    return render_template("index.html", title=title, images=img, year=datetime.now().year, indexabout=result, events=event)
+    return render_template("index.html", title="Home")
+#    title = "Home"
+#    img = db.execute('SELECT * FROM images')
+#    event = db.execute("SELECT *, substr(date, 6,2) || '-' || substr(date, 9, 2)|| '-' || substr(date, 1, 4) AS new_date FROM events WHERE date >= date('now') ORDER BY new_date ASC LIMIT 4;")
+#    result = get_text("index-about")
+#    return render_template("index.html", title=title, images=img, year=datetime.now().year, indexabout=result, events=event)
 
 
 @app.route('/events', methods=["GET", "POST"])
